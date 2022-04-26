@@ -289,25 +289,7 @@ action_t store_or_get_action(bool pressed, keypos_t key) {
  * Gets the layer based on key info
  */
 uint8_t layer_switch_get_layer(keypos_t key) {
-#ifndef NO_ACTION_LAYER
-    action_t action;
-    action.code = ACTION_TRANSPARENT;
-
-    layer_state_t layers = layer_state | default_layer_state;
-    /* check top layer first */
-    for (int8_t i = MAX_LAYER - 1; i >= 0; i--) {
-        if (layers & ((layer_state_t)1 << i)) {
-            action = action_for_key(i, key);
-            if (action.code != ACTION_TRANSPARENT) {
-                return i;
-            }
-        }
-    }
-    /* fall back to layer 0 */
-    return 0;
-#else
-    return get_highest_layer(default_layer_state);
-#endif
+    return get_highest_layer(layer_state | default_layer_state);
 }
 
 /** \brief Layer switch get layer
