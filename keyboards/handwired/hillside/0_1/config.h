@@ -33,3 +33,6 @@
 // Two mild waveforms
 #define DRV_GREETING alert_750ms
 #define DRV_MODE_DEFAULT sharp_tick3_60
+
+#define DEBOUNCE        4
+#define USB_POLLING_INTERVAL_MS 1
