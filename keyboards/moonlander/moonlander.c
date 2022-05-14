@@ -115,6 +115,8 @@ void keyboard_pre_init_kb(void) {
     keyboard_pre_init_user();
 }
 
+#ifndef NO_ACTION_LAYER
+
 #if !defined(MOONLANDER_USER_LEDS)
 layer_state_t layer_state_set_kb(layer_state_t state) {
     state = layer_state_set_user(state);
@@ -170,6 +172,8 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 
     return state;
 }
+#endif
+
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
